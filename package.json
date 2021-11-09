@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "description": "Publish npm audit output to and Azure Storage Account Table",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "azure-storage": "^2.10.5",
+    "command-line-args": "^5.2.0"
+  },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/jest": "^27.0.2",
@@ -24,7 +28,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node ./src/main.js",
+    "start": "npm run build && node ./src/index.js",
     "lint": "eslint src/**",
     "test": "jest",
     "test:watch": "jest --watch"
