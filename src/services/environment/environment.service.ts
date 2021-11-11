@@ -2,9 +2,9 @@ import { PublishServiceOptions } from '../publish/publish.service';
 
 export class EnvironmentService {
   private keys: string[] = [
-    'SYZ_ANALYSIS_STORAGE_TABLE',
-    'SYZ_ANALYSIS_STORAGE_ACCOUNT',
-    'SYZ_ANALYSIS_STORAGE_KEY',
+    'WIZ_NPM_AUDIT_STORAGE_TABLE',
+    'WIZ_NPM_AUDIT_STORAGE_ACCOUNT',
+    'WIZ_NPM_AUDIT_STORAGE_KEY',
   ];
 
   getTableInfo(): PublishServiceOptions | undefined {

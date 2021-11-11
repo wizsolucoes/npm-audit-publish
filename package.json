@@ -1,6 +1,6 @@
 {
   "name": "@wizsolucoes/npm-audit-publish",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Publish npm audit output to and Azure Storage Account Table",
   "main": "./src/index.js",
   "bin": {
