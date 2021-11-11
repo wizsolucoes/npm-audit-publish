@@ -10,7 +10,26 @@ export interface PublishServiceOptions {
 export interface BuildInfo {
   appName: string;
   teamName: string;
+  branchName: string;
   buildUrl: string;
+}
+
+interface AppEntity {
+  PartitionKey: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  RowKey: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  team: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+}
+
+interface AnalysisEntity {
+  PartitionKey: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  RowKey: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  buildUrl: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  branch: azure.TableUtilities.entityGenerator.EntityProperty<string>;
+  info: azure.TableUtilities.entityGenerator.EntityProperty<number>;
+  low: azure.TableUtilities.entityGenerator.EntityProperty<number>;
+  moderate: azure.TableUtilities.entityGenerator.EntityProperty<number>;
+  high: azure.TableUtilities.entityGenerator.EntityProperty<number>;
+  critical: azure.TableUtilities.entityGenerator.EntityProperty<number>;
 }
 
 export class PublishService {
@@ -75,7 +94,7 @@ export class PublishService {
         `Creating "${buildInfo.appName}" entity if needed...`
       );
 
-      const appEntity = {
+      const appEntity: AppEntity = {
         PartitionKey: this.entGen.String(buildInfo.appName),
         RowKey: this.entGen.String('Application'),
         team: this.entGen.String(buildInfo.teamName),
@@ -109,10 +128,11 @@ export class PublishService {
       console.log('INFO:', `Creating analysis entity...`);
       const summary = metadata.vulnerabilities;
 
-      const analsysEntity = {
+      const analsysEntity: AnalysisEntity = {
         PartitionKey: this.entGen.String(buildInfo.appName),
         RowKey: this.entGen.String(`${new Date().getTime()}`),
         buildUrl: this.entGen.String(buildInfo.buildUrl),
+        branch: this.entGen.String(buildInfo.branchName),
         info: this.entGen.Int32(summary.info),
         low: this.entGen.Int32(summary.low),
         moderate: this.entGen.Int32(summary.moderate),

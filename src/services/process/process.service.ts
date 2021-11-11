@@ -6,7 +6,8 @@ export class ProcessService {
     const optionDefinitions = [
       { name: 'app', alias: 'a', type: String },
       { name: 'team', alias: 't', type: String },
-      { name: 'build-url', alias: 'b', type: String },
+      { name: 'branch', alias: 'b', type: String },
+      { name: 'build-url', alias: 'u', type: String },
     ];
 
     const options: CommandLineOptions = commandLineArgs(optionDefinitions);
@@ -16,12 +17,13 @@ export class ProcessService {
     return {
       appName: options.app,
       teamName: options.team,
+      branchName: options.branch,
       buildUrl: options['build-url'],
     };
   }
 
   private checkArgs(options: CommandLineOptions): void {
-    const keys = ['app', 'team', 'build-url'];
+    const keys = ['app', 'team', 'branch', 'build-url'];
 
     keys.forEach((key) => {
       this.checkArg(options, key);

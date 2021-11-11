@@ -7,6 +7,7 @@ Ferramenta de linha de comando para publicar o resumo de `npm audit --production
 - [Parâmetros](#parâmetros)
   - [`--app`](#--app)
   - [`--team`](#--team)
+  - [`--branch`](#--branch)
   - [`--build-url`](#--build-url)
   - [Exemplo completo](#exemplo-completo)
 - [Desenvolvimento, por onde começar](#desenvolvimento-por-onde-começar)
@@ -39,6 +40,14 @@ $ npm-audit-publish --app anyname-web
 $ npm-audit-publish --team AnyTeamName
 ```
 
+### `--branch`
+**(Required)** Nome da branch a ser analisada.
+
+```sh
+# Exemplo
+$ npm-audit-publish --branch master
+```
+
 ### `--build-url`
 **(Required)** URL do build de CI/CD no qual a análise foi feita.
 
@@ -49,7 +58,7 @@ $ npm-audit-publish --build-url="https://dev.azure.com/company/SquadOne/_build/r
 
 ### Exemplo completo
 ```sh
-$ npm-audit-publish --app anyname-web --team AnyTeamName --build-url="https://dev.azure.com/company/SquadOne/_build/results?buildId=106015"
+$ npm-audit-publish --app anyname-web --team AnyTeamName --branch="release/example" --build-url="https://dev.azure.com/company/SquadOne/_build/results?buildId=106015"
 ```
 
 ## Desenvolvimento, por onde começar
@@ -63,7 +72,7 @@ npm install
 npm test
 
 # Run (Exemplo)
-npm run start --  --app anyname-web --team AnyTeamName --build-url="https://dev.azure.com/company/SquadOne/_build/results?buildId=106015"
+npm run start --  --app anyname-web --team AnyTeamName --branch="release/example" --build-url="https://dev.azure.com/company/SquadOne/_build/results?buildId=106015"
 ```
 
 ## Como funciona
