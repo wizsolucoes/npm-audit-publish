@@ -1,0 +1,16 @@
+trigger:
+  batch: 'true'
+
+resources:
+  repositories:
+    - repository: coretemplate
+      type: git
+      name: WizPipelines/core-template
+
+extends:
+  template: main.yml@coretemplate
+  parameters:
+    technology: 'node-package'
+    npmCustomEndpoint: 'npmjs'
+    npmRunBuild: true
+    verbose: true

@@ -2,7 +2,13 @@
   "name": "@wizsolucoes/npm-audit-publish",
   "version": "0.0.1",
   "description": "Publish npm audit output to and Azure Storage Account Table",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "bin": {
+    "npm-audit-publish": "./src/index.js"
+  },
+  "files": [
+    "src/"
+  ],
   "dependencies": {
     "@types/command-line-args": "^5.2.0",
     "azure-storage": "^2.10.5",
@@ -33,6 +39,15 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "homepage": "https://github.com/wizsolucoes/npm-audit-publish#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wizsolucoes/npm-audit-publish"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
